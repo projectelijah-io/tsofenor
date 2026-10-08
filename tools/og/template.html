@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- Share-image template (1200×630). Rendered by tools/og.mjs from file://; the card's content comes from
+     the URL hash as JSON: {title, tagline, page}; *word* in the tagline is emphasised. Without a title the card is the home-page hero
+     (צופן אור as the headline); with one, צופן אור moves up as an eyebrow and the title takes the centre.
+     The site loads its fonts from Google Fonts; the same files are vendored in fonts/ so the render is
+     offline and deterministic (og.mjs blocks all network requests). -->
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Frank Ruhl Libre'; font-weight: 300 900; src: url(fonts/frank-ruhl-libre-hebrew.woff2) format('woff2');
+               unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+  @font-face { font-family: 'Frank Ruhl Libre'; font-weight: 300 900; src: url(fonts/frank-ruhl-libre-latin.woff2) format('woff2');
+               unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url(fonts/inter-latin.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 100 800; src: url(fonts/jetbrains-mono-latin.woff2) format('woff2'); }
+
+  /* Same tokens as assets/tokens.css */
+  :root {
+    --bg: #FAFAFA; --ink: #0F0F0F; --ink-60: rgba(15,15,15,0.6); --ink-40: rgba(15,15,15,0.4); --ink-10: rgba(15,15,15,0.1);
+    --serif: 'Frank Ruhl Libre', serif; --sans: 'Inter', sans-serif; --mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: var(--bg); color: var(--ink); }
+  .card { position: relative; width: 1200px; height: 630px; overflow: hidden; }
+
+  /* The hero's Genesis 1:1-5 letter field (pages.css .hero-field), slightly larger for the thumbnail. */
+  .field { position: absolute; inset: 0; padding: 22px 30px; opacity: .10;
+           font: 400 26px/1.5 var(--serif); text-align: justify; word-spacing: .04em; overflow-wrap: anywhere; }
+  .halo { position: absolute; left: 50%; top: 50%; width: 1000px; height: 560px; transform: translate(-50%, -50%);
+          background: radial-gradient(ellipse at center, rgba(250,250,250,1) 0%, rgba(250,250,250,.88) 34%, rgba(250,250,250,0) 74%); }
+
+  .corner { position: absolute; top: 34px; inset-inline-start: 44px; display: flex; gap: 12px; align-items: center;
+            padding: 8px 14px; margin: -8px -14px; background: var(--bg); box-shadow: 0 0 18px 10px var(--bg);
+            font: 500 14px/1 var(--sans); letter-spacing: .32em; text-transform: uppercase; color: var(--ink-40); }
+  .corner .he { font: 500 22px/1 var(--serif); letter-spacing: 0; color: var(--ink); }
+  .corner .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-40); }
+
+  .center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -52%); width: 1000px; text-align: center; }
+  .headline { font: 500 190px/.95 var(--serif); letter-spacing: -.01em; }
+  .eyebrow { font: 500 34px/1 var(--serif); color: var(--ink-60); }
+  .title { margin-top: 26px; font: 500 120px/1.02 var(--serif); letter-spacing: -.01em; text-wrap: balance; }
+  .rule { width: 96px; height: 1px; margin: 36px auto; background: var(--ink); opacity: .35; }
+  .tagline { font: 400 30px/1.45 var(--sans); color: var(--ink-60); text-wrap: balance; }
+  .tagline:lang(he) { font: 400 36px/1.4 var(--serif); }
+  .tagline strong { font-weight: 500; color: var(--ink); }
+
+  .site { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); padding: 6px 4px 6px 18px;
+          background: var(--bg); box-shadow: 0 0 18px 10px var(--bg);
+          font: 400 16px/1 var(--mono); letter-spacing: .28em; color: var(--ink-40); }
+</style>
+</head>
+<body>
+<div class="card" id="card"></div>
+<script>
+  const d = JSON.parse(decodeURIComponent(location.hash.slice(1) || '{}'));
+  const esc = s => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  // Same source text as js/hero-field.jsx
+  const GENESIS = 'בראשית ברא אלהים את השמים ואת הארץ והארץ היתה תהו ובהו וחשך על פני תהום ורוח אלהים מרחפת על פני המים ויאמר אלהים יהי אור ויהי אור וירא אלהים את האור כי טוב ויבדל אלהים בין האור ובין החשך ויקרא אלהים לאור יום ולחשך קרא לילה ויהי ערב ויהי בקר יום אחד ';
+  const tagLang = /[֐-׿]/.test(d.tagline || '') ? 'he' : 'en';
+  document.getElementById('card').innerHTML = `
+    <div class="field" aria-hidden="true">${GENESIS.repeat(8)}</div>
+    <div class="halo"></div>
+    <div class="corner"><span class="he">צופן אור</span><span class="dot"></span><span dir="ltr">TSOFENOR · ${esc(d.page || '01')}</span></div>
+    <div class="center">
+      ${d.title ? `<p class="eyebrow">צופן אור</p><h1 class="title">${esc(d.title)}</h1>`
+                : `<h1 class="headline">צופן אור</h1>`}
+      ${d.tagline ? `<div class="rule"></div><p class="tagline" lang="${tagLang}" dir="${tagLang === 'he' ? 'rtl' : 'ltr'}">${esc(d.tagline).replace(/\*([^*]+)\*/g, '<strong>$1</strong>')}</p>` : ''}
+    </div>
+    <p class="site" dir="ltr">TSOFENOR.COM</p>`;
+  // Signal the renderer once every face is loaded (each load() needs a sample in the face's unicode-range).
+  Promise.all([
+    document.fonts.load('400 26px "Frank Ruhl Libre"', 'א'), document.fonts.load('500 26px "Frank Ruhl Libre"', 'א'),
+    document.fonts.load('400 26px Inter', 'A'), document.fonts.load('400 16px "JetBrains Mono"', 'A'),
+  ]).then(faces => {
+    if (faces.some(f => !f.length)) throw new Error('font failed to load');
+    return document.fonts.ready;
+  }).then(() => { document.body.dataset.ready = '1'; }, e => { document.body.dataset.ready = 'error: ' + e.message; });
+</script>
+</body>
+</html>

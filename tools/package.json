@@ -1,0 +1,9 @@
+{
+  "name": "tsofenor-tools",
+  "private": true,
+  "type": "module",
+  "description": "Share-image (og:image) renderer; not needed for deploy",
+  "dependencies": {
+    "playwright": "~1.63.0"
+  }
+}
