@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>אינדקס המחקר — צופן אור</title>
+<meta name="description" content="אינדקס המחקר של צופן אור — מקורות, עיונים ושאלות פתוחות בטקסט המסורתי.">
+<meta property="og:title" content="אינדקס המחקר — צופן אור">
+<meta property="og:description" content="Sources, studies and open questions from the TsofenOr research register.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="shelf.css">
+</head>
+<body class="tsofenor-body">
+
+<div class="idx-wrap">
+
+  <header class="idx-mast">
+    <div>
+      <a class="idx-back" href="../">צופן אור ←</a>
+      <h1>אינדקס המחקר</h1>
+      <p class="idx-lede">מקורות שנלמדו, עיונים ושאלות פתוחות. המרשם גלוי במלואו — כולל מה שעוד לא הוכרע.</p>
+    </div>
+    <div class="idx-count" id="count"></div>
+  </header>
+
+  <div class="idx-bar">
+    <input class="idx-search" id="q" type="search" placeholder="חיפוש באינדקס…" aria-label="חיפוש">
+    <div class="idx-chips" id="tags"></div>
+    <div class="idx-controls">
+      <label class="sr-only" for="sort">מיון</label>
+      <select class="idx-sort" id="sort">
+        <option value="new">חדש ← ישן</option>
+        <option value="old">ישן ← חדש</option>
+        <option value="az">לפי כותרת</option>
+        <option value="sig">לפי אשכול</option>
+      </select>
+      <div class="idx-seg" role="group" aria-label="תצוגה">
+        <button id="v-shelf" aria-pressed="true">מדף</button>
+        <button id="v-cat" aria-pressed="false">קטלוג</button>
+      </div>
+    </div>
+  </div>
+
+  <main id="out" aria-live="polite">
+    <div class="idx-empty">טוען…</div>
+  </main>
+
+  <footer class="idx-foot">
+    <div>צופן אור · אינדקס המחקר</div>
+    <div>המקור פתוח · <span id="stamp"></span></div>
+  </footer>
+
+</div>
+
+<div class="idx-backdrop" id="bd" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="idx-sheet" id="sheet"></div>
+</div>
+
+<script src="shelf.js"></script>
+</body>
+</html>
