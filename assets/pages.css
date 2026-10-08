@@ -1,0 +1,580 @@
+/* TsofenOr — page & component styles (hero, findings, vision, footer).
+   Unpacked unchanged from the bundled export. */
+
+/* =====================================================================
+   Homepage-specific styles. The base system lives in tokens.css.
+   ===================================================================== */
+
+/* ---------- Page rhythm ---------- */
+main { display: block; }
+
+.gap-after-hero { height: var(--4xl); }      /* 160px */
+.gap-3xl        { height: var(--3xl); }      /* 96px  */
+.gap-2xl        { height: var(--2xl); }      /* 64px  */
+.gap-xl         { height: var(--xl); }       /* 48px  */
+.gap-lg         { height: var(--lg); }       /* 32px  */
+.gap-md         { height: var(--md); }       /* 24px  */
+@media (max-width: 768px) {
+  .gap-after-hero { height: var(--3xl); }
+  .gap-3xl        { height: var(--2xl); }
+  .gap-2xl        { height: var(--xl); }
+}
+
+/* =====================================================================
+   HERO — atmospheric Hebrew field with synchronized pulses.
+   ===================================================================== */
+.hero-atmos {
+  position: relative;
+  height: 100vh;
+  min-height: 720px;
+  background: var(--bg);
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .hero-atmos { height: 90vh; min-height: 560px; }
+}
+
+/* The full-bleed Hebrew field — 10% opacity, fills entire hero. */
+.hero-field {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  padding: 24px 32px;
+  opacity: 0.10;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--ink);
+  text-align: justify;
+  word-spacing: 0.04em;
+  letter-spacing: 0;
+  user-select: none;
+  pointer-events: none;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 768px) {
+  .hero-field { padding: 20px 24px; font-size: 16px; }
+}
+
+/* Each letter is wrapped — pulse animation targets data-pulse cells. */
+.hero-field span.l {
+  display: inline;
+  position: relative;
+  transition: none;
+}
+
+/* When a letter is in a pulse window: white-circle clearing centered on it. */
+.hero-field span.l.pulse {
+  display: inline-block;
+  animation: pulse-clear 1100ms ease-out forwards;
+}
+@keyframes pulse-clear {
+  0%   { color: var(--ink); }
+  35%  { color: rgba(15,15,15,0); }   /* letter fades to invisible */
+  100% { color: var(--ink); }         /* returns to ink (parent opacity 0.10 still applies) */
+}
+
+/* The glowing white "clearing" disc that briefly opens around a pulse cell. */
+.hero-field span.l.pulse::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 56px; height: 56px;
+  transform: translate(-50%, -50%) scale(0.4);
+  background: var(--bg);
+  border-radius: 50%;
+  /* sit ABOVE the surrounding text — but we punch a hole by inverting opacity:
+     the field itself is 0.10 opacity; this disc is opaque bg, which over-paints
+     surrounding letters. */
+  z-index: 1;
+  opacity: 0;
+  /* a soft outer glow so the edge isn't sharp */
+  box-shadow: 0 0 24px 8px var(--bg);
+  animation: pulse-disc 1100ms ease-out forwards;
+  pointer-events: none;
+}
+@keyframes pulse-disc {
+  0%   { opacity: 0;    transform: translate(-50%, -50%) scale(0.4); }
+  35%  { opacity: 1;    transform: translate(-50%, -50%) scale(1.0); }
+  70%  { opacity: 1;    transform: translate(-50%, -50%) scale(1.05); }
+  100% { opacity: 0;    transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* The tiny eyebrow above the wordmark in the hero corner-mark area */
+.hero-corner {
+  position: absolute;
+  top: 24px; inset-inline-start: 32px;
+  z-index: 3;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  display: flex; gap: 10px; align-items: center;
+}
+.hero-corner .he { font-family: var(--serif); font-weight: 500; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.hero-corner .dot { width: 3px; height: 3px; background: var(--ink-40); border-radius: 50%; }
+
+/* The centered headline cluster — absolute center of hero, both axes */
+.hero-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  padding: 0 24px;
+  width: 100%;
+  max-width: 960px;
+}
+/* Soft radial halo behind the foreground so the headline reads against the field */
+.hero-halo {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: min(900px, 80vw);
+  height: min(560px, 60vh);
+  pointer-events: none;
+  background: radial-gradient(ellipse at center,
+    rgba(250,250,250,1) 0%,
+    rgba(250,250,250,0.85) 30%,
+    rgba(250,250,250,0) 75%);
+}
+.hero-center .headline {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(96px, 13vw, 200px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+.hero-center .subtitle {
+  margin: 28px auto 0;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  color: var(--ink-60);
+  max-width: 56ch;
+  direction: ltr;
+}
+.hero-center .cta-wrap {
+  margin-top: 40px;
+  display: flex; justify-content: center;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 12px;
+  font-family: var(--sans); font-weight: 500; font-size: 13px;
+  letter-spacing: 0.08em; line-height: 1;
+  padding: 16px 28px;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: background var(--t-base), color var(--t-base);
+}
+.hero-cta:hover { background: var(--ink); color: var(--bg); }
+.hero-cta .he { font-family: var(--serif); font-weight: 500; font-size: 15px; }
+.hero-cta .sep { width: 1px; height: 14px; background: currentColor; opacity: 0.3; }
+.hero-cta .en { font-family: var(--sans); font-weight: 500; font-size: 12px; letter-spacing: 0.08em; direction: ltr; }
+
+/* =====================================================================
+   SECTION HEADERS (centered, eyebrow + title + subtitle + hairline)
+   ===================================================================== */
+.section-head-centered { text-align: center; }
+.section-head-centered .eyebrow {
+  display: inline-block;
+  margin: 0;
+  color: var(--ink);
+}
+.section-head-centered .title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: var(--t-pagetitle);
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 24px 0 0;
+  text-wrap: pretty;
+}
+.section-head-centered .subtitle {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: var(--t-body-lg);
+  line-height: 1.6;
+  color: var(--ink-60);
+  margin: 16px auto 0;
+  max-width: 60ch;
+  direction: ltr;
+}
+.section-head-centered .rule {
+  width: 60px; height: 1px;
+  background: var(--ink-10);
+  margin: 40px auto 0;
+}
+
+/* =====================================================================
+   FINDING CARDS (3-column grid; override .card-grid columns)
+   ===================================================================== */
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--md);
+}
+@media (max-width: 768px) {
+  .findings-grid { grid-template-columns: 1fr; }
+}
+
+.fcard {
+  background: var(--surface);
+  border: 1px solid var(--ink-10);
+  padding: var(--lg);
+  display: flex; flex-direction: column;
+  min-height: 480px;
+}
+.fcard .eyebrow {
+  font-family: var(--sans); font-weight: 500; font-size: 11px;
+  letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-40);
+  display: block;
+}
+.fcard .he-title {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 28px; line-height: 1.2;
+  color: var(--ink);
+  margin: 16px 0 6px;
+}
+.fcard .en-title {
+  font-family: var(--sans); font-weight: 500;
+  font-size: 14px; line-height: 1.4;
+  color: var(--ink-60);
+  direction: ltr; text-align: left;
+  margin: 0;
+}
+.fcard .body {
+  font-family: var(--sans); font-weight: 400;
+  font-size: 15px; line-height: 1.65;
+  color: var(--ink);
+  margin: 20px 0 0;
+}
+.fcard .visual {
+  margin: 32px 0 0;
+  height: 80px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.fcard .visual + .caption {
+  margin-top: 10px;
+  font-family: var(--mono); font-size: 11px;
+  color: var(--ink-40); letter-spacing: 0.04em;
+  text-align: center; direction: ltr;
+}
+.fcard .action {
+  margin-top: auto;
+  padding-top: 28px;
+  text-align: start;
+}
+
+/* CARD 1 — YHVH letters with hairline tick separators */
+.yhvh-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 18px;
+  direction: rtl;
+  font-family: var(--serif); font-weight: 500;
+  font-size: 36px;
+  line-height: 1;
+}
+.yhvh-row .y-let { display: inline-block; }
+.yhvh-row .y-let.y-i { color: #0F0F0F; }
+.yhvh-row .y-let.y-h { color: rgba(15,15,15,0.5); }
+.yhvh-row .y-let.y-v { color: #0A2540; }
+.yhvh-row .y-tick {
+  width: 14px; height: 1px; background: var(--ink-10);
+  display: inline-block;
+}
+
+/* CARD 2 — 177 vavs scatter */
+.vav-field {
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+.vav-field svg { width: 100%; height: 100%; display: block; }
+
+/* CARD 3 — אלהים with יהלם wrapped */
+.elohim {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 40px; line-height: 1;
+  color: var(--ink);
+  display: inline-flex; align-items: center;
+  direction: rtl;
+  letter-spacing: 0.02em;
+}
+.elohim .alef { padding: 6px 4px 6px 8px; }
+.elohim .yhlm-box {
+  border: 1px solid var(--accent);
+  padding: 6px 8px;
+}
+
+/* =====================================================================
+   VISION SECTION — two-column 60/40 split
+   ===================================================================== */
+.vision-grid {
+  display: grid;
+  grid-template-columns: 40fr 60fr; /* EN left (40%), HE right (60%) */
+  gap: 64px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .vision-grid { grid-template-columns: 1fr; gap: 32px; }
+  .vision-en { order: 2; }
+  .vision-he { order: 1; }
+}
+
+.vision-col .eyebrow {
+  font-family: var(--sans); font-weight: 500; font-size: 11px;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--ink); display: block;
+  margin: 0 0 24px;
+}
+.vision-col .vtitle {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 40px; line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 32px;
+  text-wrap: pretty;
+}
+.vision-col p {
+  font-family: var(--sans); font-weight: 400;
+  font-size: 18px; line-height: 1.65;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+.vision-col p:last-child { margin-bottom: 0; }
+.vision-en {
+  direction: ltr; text-align: left;
+}
+.vision-en p { font-size: 16px; }
+.vision-en .vtitle { font-size: 32px; }
+
+@media (max-width: 768px) {
+  .vision-col .vtitle { font-size: 32px; }
+  .vision-en .vtitle { font-size: 26px; }
+  .vision-col p { font-size: 16px; }
+}
+
+/* ---------- Architecture diagram ---------- */
+.arch-diagram {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+.arch-node {
+  flex: 0 0 auto;
+  text-align: center;
+  display: flex; flex-direction: column; gap: 6px;
+  min-width: 110px;
+}
+.arch-node .he {
+  font-family: var(--sans); font-weight: 500; font-size: 18px;
+  line-height: 1.3; color: var(--ink);
+}
+.arch-node .en {
+  font-family: var(--sans); font-weight: 400; font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-40);
+  direction: ltr;
+}
+.arch-arrow {
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--ink-10);
+  position: relative;
+  min-width: 32px;
+  max-width: 140px;
+  margin: 0;
+}
+/* Arrowhead — flow direction is RTL, so arrows point LEFT visually
+   (the chain reads רש→ק→מ→צ from right to left). */
+.arch-arrow::before {
+  content: "";
+  position: absolute;
+  left: -1px; top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-right: 5px solid var(--ink-40);
+}
+@media (max-width: 768px) {
+  .arch-diagram { flex-direction: column; gap: 16px; }
+  .arch-arrow {
+    width: 1px; height: 32px; min-width: 0; max-width: none; max-height: 32px;
+  }
+  .arch-arrow::before {
+    left: 50%; top: auto; bottom: -1px;
+    transform: translateX(-50%);
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 5px solid var(--ink-40);
+    border-bottom: 0;
+  }
+}
+
+.attribution {
+  text-align: center;
+  font-family: var(--sans); font-weight: 400; font-size: 13px;
+  line-height: 1.6; color: var(--ink-60);
+  max-width: 64ch; margin: 0 auto;
+}
+.attribution .en {
+  display: block;
+  font-family: var(--sans); font-size: 12px; color: var(--ink-40);
+  margin-top: 4px; direction: ltr;
+}
+
+/* =====================================================================
+   GET INVOLVED
+   ===================================================================== */
+.involved-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.involved-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  text-align: start;
+}
+@media (max-width: 768px) {
+  .involved-grid { grid-template-columns: 1fr; }
+}
+
+.involved-item {
+  display: flex; flex-direction: column;
+  padding: 0;
+}
+.involved-item .num {
+  font-family: var(--mono); font-weight: 500; font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-40); direction: ltr;
+  margin: 0 0 16px;
+}
+.involved-item .he {
+  font-family: var(--sans); font-weight: 500; font-size: 16px;
+  line-height: 1.5; color: var(--ink); margin: 0 0 6px;
+}
+.involved-item .en {
+  font-family: var(--sans); font-weight: 400; font-size: 14px;
+  line-height: 1.5; color: var(--ink-60);
+  direction: ltr; margin: 0 0 24px;
+}
+.involved-item .btn-ghost { align-self: flex-start; }
+
+/* Override the ghost button to support inline HE/EN with a small arrow */
+.btn-ghost.bilingual {
+  display: inline-flex; gap: 8px; align-items: baseline; flex-wrap: wrap;
+}
+.btn-ghost.bilingual .he { font-family: var(--sans); }
+.btn-ghost.bilingual .en {
+  font-family: var(--sans); font-weight: 500; color: inherit; direction: ltr;
+}
+.btn-ghost.bilingual .arrow { font-family: var(--mono); }
+
+/* =====================================================================
+   MISSION — dark-field statement directly under the hero.
+   Inversion of the system: ink surface, bg-toned text. Hairline accents only.
+   ===================================================================== */
+.mission {
+  background: var(--ink);
+  color: var(--bg);
+  padding: var(--3xl) 64px;
+}
+@media (max-width: 768px) {
+  .mission { padding: var(--2xl) 24px; }
+}
+.mission-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+.mission-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--sans); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.6);
+  margin: 0 0 var(--xl);
+}
+.mission-eyebrow .he {
+  font-family: var(--sans); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.32em;
+  color: var(--bg);
+}
+.mission-eyebrow .dot {
+  width: 3px; height: 3px; border-radius: 50%;
+  background: rgba(250,250,250,0.4);
+}
+.mission-statement {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.4;
+  color: var(--bg);
+  margin: 0 auto;
+  max-width: 24ch;
+  text-wrap: pretty;
+}
+.mission-en {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(14px, 1vw, 16px);
+  line-height: 1.65;
+  color: rgba(250,250,250,0.55);
+  margin: var(--xl) auto 0;
+  max-width: 64ch;
+  direction: ltr;
+}
+
+/* Page section padding */
+.section-pad {
+  padding: 0 64px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .section-pad { padding: 0 24px; }
+}
+
+/* Section eyebrows centered (with separator dots) */
+.eyebrow-row {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--sans); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.32em;
+  text-transform: uppercase; color: var(--ink);
+}
+.eyebrow-row .he { font-family: var(--sans); font-weight: 500; }
+.eyebrow-row .num { font-family: var(--mono); color: var(--ink-40); letter-spacing: 0.16em; }
+.eyebrow-row .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-40); }
+
+/* The centered "view all findings" ghost link */
+.center-ghost {
+  text-align: center;
+  margin: 0;
+}
+
+/* Full-width hairline */
+.divider-full {
+  height: 1px; background: var(--ink-10); width: 100%;
+}
+
+/* Helpful overrides for footer spacing — section already has top hairline */
+footer.footer { margin-top: 0; }
