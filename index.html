@@ -36,6 +36,12 @@
 <body class="tsofenor-body">
 
 <div id="root"></div>
+<!-- Netlify form detection: the visible form is rendered by React (js/app.jsx). -->
+<form name="follow" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="follow"><input name="lang"><input name="bot-field">
+  <input type="email" name="email"><input name="name"><textarea name="message"></textarea><input type="checkbox" name="consent">
+</form>
+
 
 <!-- DEV: Babel compiles JSX in the browser. Fine while iterating.
      BEFORE DEPLOY: precompile js/*.jsx to js/*.js and drop babel.
