@@ -18,6 +18,9 @@ const MAX_BYTES = 300 * 1024;
 const cards = [
   { name: 'home', page: '01', tagline: '*Decoding* the dimension of *Light*' },
   { name: 'research', page: 'INDEX', title: 'אינדקס המחקר', tagline: 'מקורות, עיונים ושאלות פתוחות' },
+  // /en/research/ and /ja/research/ (home.jpg — Hebrew wordmark + English tagline — is shared by all three home pages)
+  { name: 'research-en', page: 'INDEX', lang: 'en', title: 'Research Index', tagline: 'Sources, reflections and open questions' },
+  { name: 'research-ja', page: 'INDEX', lang: 'ja', title: '研究インデックス', tagline: '出典、考察、そして未解決の問い' },
 ];
 
 const filter = process.argv[2];

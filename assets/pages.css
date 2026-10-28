@@ -598,3 +598,46 @@ footer.footer { margin-top: 0; }
 .follow-error { margin: 0; font-size: 14px; color: var(--ink); }
 
 a.btn-ghost { text-decoration: none; color: inherit; }
+
+/* =====================================================================
+   LANGUAGE VERSIONS — / (he, RTL) · /en/ (en, LTR) · /ja/ (ja, LTR)
+   Each page pairs its language with a companion (he+en, en+he, ja+en);
+   the companion-language elements carry lang (and dir for sentences).
+   ===================================================================== */
+
+/* The Genesis field is Hebrew on every page: keep its word order RTL. */
+.hero-field { direction: rtl; }
+
+/* On /en/ the companion is the Hebrew original, set in slots styled for English (direction: ltr). */
+.subtitle[dir="rtl"], .mission-en[dir="rtl"], .attribution .en[dir="rtl"],
+.fcard .en-title[dir="rtl"] { direction: rtl; }
+.vision-en[dir="rtl"] { direction: rtl; text-align: right; }
+.involved-item .en[dir="rtl"] { direction: rtl; text-align: left; }
+html:lang(en) :not(html):lang(he) { letter-spacing: 0; }
+html:lang(en) .mission-statement { max-width: 32ch; }
+
+/* LTR pages: the architecture chain reads left to right, so the arrowheads point right. */
+@media (min-width: 769px) {
+  html[dir="ltr"] .arch-arrow::before {
+    left: auto; right: -1px;
+    border-right: 0; border-left: 5px solid var(--ink-40);
+  }
+}
+
+/* Japanese: Noto Serif JP / Noto Sans JP behind the Latin faces (loaded on /ja/ pages only),
+   strict line breaking, no tracking on CJK text, phrase-aware wrapping for headings. */
+html:lang(ja) {
+  --serif: "Frank Ruhl Libre", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --sans:  "Inter", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --mono:  "JetBrains Mono", "Noto Sans JP", monospace;
+  line-break: strict;
+}
+html:lang(ja) .eyebrow-row .he, html:lang(ja) .mission-eyebrow .he, html:lang(ja) .hero-cta .he,
+html:lang(ja) .fcard .eyebrow, html:lang(ja) .vision-he .eyebrow, html:lang(ja) .btn-ghost { letter-spacing: 0; }
+html:lang(ja) .fcard .eyebrow [lang="en"] { letter-spacing: 0.32em; }
+html:lang(ja) .title, html:lang(ja) .vtitle, html:lang(ja) .mission-statement,
+html:lang(ja) .he-title { word-break: auto-phrase; }
+html:lang(ja) .mission-statement { max-width: 18em; }
+@media (max-width: 720px) {
+  html:lang(ja) .section-head-centered .title { font-size: 34px !important; } /* beats the inline 40px; keeps phrases whole */
+}

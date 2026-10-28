@@ -6,7 +6,36 @@
 (function () {
   'use strict';
 
-  var DATA_URL = '../data/entries.json';
+  var DATA_URL = '/data/entries.json';
+
+  /* Page language from the URL path (/en/research/, /ja/research/; anything else is Hebrew).
+     Entries are written in Hebrew; an entry's `i18n.<lang>` holds its English/Japanese
+     title, text, cluster, kind and tags. Hebrew quotations and the letters under study stay
+     Hebrew inside those texts; `sig` and `glyph` are never translated. */
+  var LANG = (/^\/(en|ja)\//.exec(location.pathname) || [, 'he'])[1];
+  var UI = {
+    he: { locale: 'he-IL', count: function (n, c) { return n + ' רשומות · ' + c + ' אשכולות'; },
+          empty: 'אין רשומות תואמות. נקה את הסינון או נסח מחדש.', updated: 'עודכן ', close: 'סגירה',
+          fail: 'לא ניתן לטעון את האינדקס.' },
+    en: { locale: 'en-GB', count: function (n, c) { return n + ' entries · ' + c + ' clusters'; },
+          empty: 'No matching entries. Clear the filter or rephrase.', updated: 'Updated ', close: 'Close',
+          fail: 'The index could not be loaded.' },
+    ja: { locale: 'ja-JP', count: function (n, c) { return n + '件 · ' + c + 'クラスター'; },
+          empty: '該当する項目はありません。絞り込みを解除するか、言葉を変えてお試しください。', updated: '更新 ', close: '閉じる',
+          fail: 'インデックスを読み込めませんでした。' },
+  }[LANG];
+
+  /* The entry as shown on this page: translated fields laid over the Hebrew original. */
+  function localize(e) {
+    var t = (e.i18n && e.i18n[LANG]) || {};
+    var o = {};
+    for (var k in e) if (k !== 'i18n') o[k] = e[k];
+    ['title', 'text', 'cluster', 'kind', 'tags'].forEach(function (k) { if (t[k] != null) o[k] = t[k]; });
+    o.he = e; // the original, so a Hebrew search still finds it
+    return o;
+  }
+  /* On LTR pages, isolate Hebrew labels (signatures, glyphs, clusters) so their bidi stays intact. */
+  function iso(s) { return LANG === 'he' ? esc(s) : '<bdi>' + esc(s) + '</bdi>'; }
   var entries = [];
   var view = 'shelf';
   var query = '';
@@ -34,7 +63,7 @@
   function formatDate(iso) {
     var d = new Date(iso);
     if (isNaN(d)) return iso;
-    return d.toLocaleDateString('he-IL', { day: 'numeric', month: 'short', year: 'numeric' });
+    return d.toLocaleDateString(UI.locale, { day: 'numeric', month: 'short', year: 'numeric' });
   }
 
   function tagCounts() {
@@ -53,7 +82,9 @@
       if (!all) return false;
     }
     if (!query) return true;
-    var hay = [e.title, e.text, e.cluster, e.kind, (e.tags || []).join(' ')].join(' ').toLowerCase();
+    var o = e.he || e;
+    var hay = [e.title, e.text, e.cluster, e.kind, (e.tags || []).join(' '),
+               o.title, o.text, o.cluster, o.kind, (o.tags || []).join(' ')].join(' ').toLowerCase();
     return hay.indexOf(query.toLowerCase()) !== -1;
   }
 
@@ -61,7 +92,7 @@
     var a = entries.filter(passes);
     if (sortBy === 'new') a.sort(function (x, y) { return String(y.date).localeCompare(String(x.date)); });
     if (sortBy === 'old') a.sort(function (x, y) { return String(x.date).localeCompare(String(y.date)); });
-    if (sortBy === 'az') a.sort(function (x, y) { return String(x.title).localeCompare(String(y.title), 'he'); });
+    if (sortBy === 'az') a.sort(function (x, y) { return String(x.title).localeCompare(String(y.title), LANG); });
     if (sortBy === 'sig') a.sort(function (x, y) { return String(x.sig).localeCompare(String(y.sig), 'he'); });
     return a;
   }
@@ -84,11 +115,11 @@
     renderTags();
     var items = visible();
     var clusters = new Set(entries.map(function (e) { return e.cluster; }));
-    $('count').textContent = entries.length + ' רשומות · ' + clusters.size + ' אשכולות';
+    $('count').textContent = UI.count(entries.length, clusters.size);
 
     var out = $('out');
     if (!items.length) {
-      out.innerHTML = '<div class="idx-empty">אין רשומות תואמות. נקה את הסינון או נסח מחדש.</div>';
+      out.innerHTML = '<div class="idx-empty">' + esc(UI.empty) + '</div>';
       return;
     }
 
@@ -96,20 +127,20 @@
       out.innerHTML = '<div class="shelf">' + items.map(function (e) {
         return '<button type="button" class="sleeve" data-id="' + esc(e.id) + '">' +
           '<span class="cover">' +
-            '<span class="sig">' + esc(e.sig) + '</span>' +
-            '<span class="glyph ' + glyphClass(e.glyph) + '">' + esc(e.glyph) + '</span>' +
+            '<span class="sig">' + iso(e.sig) + '</span>' +
+            '<span class="glyph ' + glyphClass(e.glyph) + '">' + iso(e.glyph) + '</span>' +
             '<span class="kind">' + esc(e.kind) + '</span>' +
           '</span>' +
           '<span class="info">' +
             '<h2>' + esc(e.title) + '</h2>' +
-            '<span class="sub">' + esc(e.cluster) + ' · ' + formatDate(e.date) + '</span>' +
+            '<span class="sub">' + iso(e.cluster) + ' · ' + formatDate(e.date) + '</span>' +
           '</span>' +
         '</button>';
       }).join('') + '</div>';
     } else {
       out.innerHTML = '<div class="catalog">' + items.map(function (e) {
         return '<button type="button" class="rowitem" data-id="' + esc(e.id) + '">' +
-          '<span class="sig">' + esc(e.sig) + '</span>' +
+          '<span class="sig">' + iso(e.sig) + '</span>' +
           '<span class="ttl">' + esc(e.title) + '</span>' +
           '<span class="snip">' + esc(String(e.text).split('\n')[0]) + '</span>' +
           '<span class="kd">' + esc(e.kind) + ' · ' + formatDate(e.date) + '</span>' +
@@ -128,15 +159,15 @@
     lastFocus = source || null;
     $('sheet').innerHTML =
       '<div class="head">' +
-        '<div class="mini ' + glyphClass(e.glyph) + '">' + esc(e.glyph) + '</div>' +
+        '<div class="mini ' + glyphClass(e.glyph) + '">' + iso(e.glyph) + '</div>' +
         '<div><h2>' + esc(e.title) + '</h2>' +
-          '<div class="stamp">' + esc(e.sig) + ' · ' + esc(e.cluster) + ' · ' +
+          '<div class="stamp">' + iso(e.sig) + ' · ' + iso(e.cluster) + ' · ' +
             esc(e.kind) + ' · ' + formatDate(e.date) + '</div></div>' +
       '</div>' +
       '<p class="text">' + esc(e.text) + '</p>' +
       '<div class="tg">' + (e.tags || []).map(function (t) {
         return '<span>' + esc(t) + '</span>'; }).join('') + '</div>' +
-      '<div class="acts"><button type="button" class="idx-btn" id="close-sheet">סגירה</button></div>';
+      '<div class="acts"><button type="button" class="idx-btn" id="close-sheet">' + esc(UI.close) + '</button></div>';
     var bd = $('bd');
     bd.classList.add('open');
     bd.setAttribute('aria-hidden', 'false');
@@ -179,14 +210,14 @@
       return r.json();
     })
     .then(function (doc) {
-      entries = doc.entries || [];
-      if ($('stamp')) $('stamp').textContent = 'עודכן ' + formatDate(doc.updated);
+      entries = (doc.entries || []).map(localize);
+      if ($('stamp')) $('stamp').textContent = UI.updated + formatDate(doc.updated);
       render();
       var h = location.hash.replace('#', '');
       if (h) openEntry(h, null);
     })
     .catch(function (err) {
-      $('out').innerHTML = '<div class="idx-empty">לא ניתן לטעון את האינדקס.<br>' +
+      $('out').innerHTML = '<div class="idx-empty">' + esc(UI.fail) + '<br>' +
         '<span style="font-family:var(--mono);font-size:12px">' + esc(err.message) + '</span></div>';
     });
 })();

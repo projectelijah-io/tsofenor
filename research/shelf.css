@@ -22,6 +22,14 @@
   transition:color var(--t-fast);
 }
 .idx-back:hover{color:var(--accent)}
+/* back link + language switcher (lang-toggle from tokens.css) on one row */
+.idx-top{display:flex;align-items:center;justify-content:space-between;gap:var(--md);margin-bottom:var(--sm)}
+.idx-top .idx-back{margin-bottom:0}
+.idx-mast > div:first-child{flex:1 1 auto}
+/* Japanese pages: Noto faces behind the Latin ones, strict line breaking, no tracking on CJK */
+html:lang(ja){--serif:"Frank Ruhl Libre","Noto Serif JP",serif;--sans:"Inter","Noto Sans JP",sans-serif;--mono:"JetBrains Mono","Noto Sans JP",monospace;line-break:strict}
+html:lang(ja) .cover .kind{letter-spacing:0}
+html:lang(ja) .idx-mast h1,html:lang(ja) .info h2,html:lang(ja) .idx-sheet h2{word-break:auto-phrase}
 .idx-mast h1{
   font-family:var(--serif);font-weight:500;
   font-size:var(--t-pagetitle);line-height:1.1;margin:0 0 var(--xs);
