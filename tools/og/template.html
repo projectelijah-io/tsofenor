@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <!-- Share-image template (1200×630). Rendered by tools/og.mjs from file://; the card's content comes from
-     the URL hash as JSON: {title, tagline, page}; *word* in the tagline is emphasised. Without a title the card is the home-page hero
+     the URL hash as JSON: {title, tagline, page, lang}; *word* in the tagline is emphasised. Without a title the card is the home-page hero
      (צופן אור as the headline); with one, צופן אור moves up as an eyebrow and the title takes the centre.
      The site loads its fonts from Google Fonts; the same files are vendored in fonts/ so the render is
      offline and deterministic (og.mjs blocks all network requests). -->
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="fonts/noto-jp.css">
 <style>
   @font-face { font-family: 'Frank Ruhl Libre'; font-weight: 300 900; src: url(fonts/frank-ruhl-libre-hebrew.woff2) format('woff2');
                unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
@@ -18,7 +19,7 @@
   /* Same tokens as assets/tokens.css */
   :root {
     --bg: #FAFAFA; --ink: #0F0F0F; --ink-60: rgba(15,15,15,0.6); --ink-40: rgba(15,15,15,0.4); --ink-10: rgba(15,15,15,0.1);
-    --serif: 'Frank Ruhl Libre', serif; --sans: 'Inter', sans-serif; --mono: 'JetBrains Mono', monospace;
+    --serif: 'Frank Ruhl Libre', 'Noto Serif JP', serif; --sans: 'Inter', 'Noto Sans JP', sans-serif; --mono: 'JetBrains Mono', monospace;
   }
   * { box-sizing: border-box; margin: 0; }
   html, body { width: 1200px; height: 630px; overflow: hidden; background: var(--bg); color: var(--ink); }
@@ -44,6 +45,7 @@
   .tagline { font: 400 30px/1.45 var(--sans); color: var(--ink-60); text-wrap: balance; }
   .tagline:lang(he) { font: 400 36px/1.4 var(--serif); }
   .tagline strong { font-weight: 500; color: var(--ink); }
+  :lang(ja) { letter-spacing: 0; line-break: strict; word-break: auto-phrase; }
 
   .site { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); padding: 6px 4px 6px 18px;
           background: var(--bg); box-shadow: 0 0 18px 10px var(--bg);
@@ -57,13 +59,14 @@
   const esc = s => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   // Same source text as js/hero-field.jsx
   const GENESIS = 'בראשית ברא אלהים את השמים ואת הארץ והארץ היתה תהו ובהו וחשך על פני תהום ורוח אלהים מרחפת על פני המים ויאמר אלהים יהי אור ויהי אור וירא אלהים את האור כי טוב ויבדל אלהים בין האור ובין החשך ויקרא אלהים לאור יום ולחשך קרא לילה ויהי ערב ויהי בקר יום אחד ';
-  const tagLang = /[֐-׿]/.test(d.tagline || '') ? 'he' : 'en';
+  const tagLang = /[֐-׿]/.test(d.tagline || '') ? 'he' : (d.lang || 'en');
+  const titleLang = d.lang || 'he';
   document.getElementById('card').innerHTML = `
     <div class="field" aria-hidden="true">${GENESIS.repeat(8)}</div>
     <div class="halo"></div>
     <div class="corner"><span class="he">צופן אור</span><span class="dot"></span><span dir="ltr">TSOFENOR · ${esc(d.page || '01')}</span></div>
     <div class="center">
-      ${d.title ? `<p class="eyebrow">צופן אור</p><h1 class="title">${esc(d.title)}</h1>`
+      ${d.title ? `<p class="eyebrow">צופן אור</p><h1 class="title" lang="${titleLang}" dir="${titleLang === 'he' ? 'rtl' : 'ltr'}">${esc(d.title)}</h1>`
                 : `<h1 class="headline">צופן אור</h1>`}
       ${d.tagline ? `<div class="rule"></div><p class="tagline" lang="${tagLang}" dir="${tagLang === 'he' ? 'rtl' : 'ltr'}">${esc(d.tagline).replace(/\*([^*]+)\*/g, '<strong>$1</strong>')}</p>` : ''}
     </div>
@@ -72,6 +75,8 @@
   Promise.all([
     document.fonts.load('400 26px "Frank Ruhl Libre"', 'א'), document.fonts.load('500 26px "Frank Ruhl Libre"', 'א'),
     document.fonts.load('400 26px Inter', 'A'), document.fonts.load('400 16px "JetBrains Mono"', 'A'),
+    ...(d.lang === 'ja' ? [document.fonts.load('500 26px "Noto Serif JP"', d.title || 'あ'),
+                           document.fonts.load('400 26px "Noto Sans JP"', d.tagline || 'あ')] : []),
   ]).then(faces => {
     if (faces.some(f => !f.length)) throw new Error('font failed to load');
     return document.fonts.ready;

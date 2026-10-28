@@ -58,37 +58,35 @@ function ElohimVisual() {
   );
 }
 
-function FindingCard({ eyebrow, heTitle, enTitle, body, visual, caption, ctaHe }) {
+function FindingCard({ eyebrow, latin, title, secTitle, body, visual, caption, cta }) {
   return (
     <article className="fcard">
-      <span className="eyebrow">{eyebrow}</span>
-      <h3 className="he-title">{heTitle}</h3>
-      <p className="en-title" lang="en" dir="ltr">{enTitle}</p>
+      {TS_LANG === 'en'
+        ? <span className="eyebrow"><span lang="en">{latin}</span> · <span lang="he">{eyebrow}</span></span>
+        : <span className="eyebrow">{eyebrow} · <span lang="en">{latin}</span></span>}
+      <h3 className="he-title">{title}</h3>
+      <p className="en-title" {...dirAttrs()}>{secTitle}</p>
       <p className="body">{body}</p>
       <div className="visual">{visual}</div>
-      {caption && <div className="caption" lang="en" dir="ltr">{caption}</div>}
+      {caption && <div className="caption" lang={TS_LANG === 'ja' ? 'ja' : 'en'} dir="ltr">{caption}</div>}
       <div className="action">
-        <button className="btn-ghost">{ctaHe}</button>
+        <button className="btn-ghost">{cta}</button>
       </div>
     </article>
   );
 }
 
 function ThreeFindings() {
+  const F = T.findings;
+  const visuals = [<YhvhVisual />, <VavScatter />, <ElohimVisual />];
   return (
     <section data-screen-label="Findings">
       <div className="section-pad">
         <div className="section-head-centered">
-          <span className="eyebrow-row">
-            <span className="he">ממצאים</span>
-            <span className="dot"></span>
-            <span>FINDINGS</span>
-            <span className="dot"></span>
-            <span className="num">03</span>
-          </span>
-          <h2 className="title">שלושה ממצאים. בלתי תלויים. נמצאו בטקסט המסורתי.</h2>
-          <p className="subtitle" lang="en" dir="ltr">
-            Three findings. Independently discovered. Embedded in the Masoretic text.
+          <Eyebrow label={F.eyebrow} latin={F.latin} num="03" />
+          <h2 className="title">{F.title}</h2>
+          <p className="subtitle" {...dirAttrs()}>
+            {F.sub}
           </p>
           <div className="rule"></div>
         </div>
@@ -96,41 +94,27 @@ function ThreeFindings() {
         <div className="gap-xl"></div>
 
         <div className="findings-grid">
-          <FindingCard
-            eyebrow="ממצא ראשון · FINDING ONE"
-            heTitle="שם ה' בשלושה צבעים"
-            enTitle="YHVH appears spontaneously in three colors"
-            body="כאשר אותיות הטקסט מסומנות לפי הערך הגימטרי שלהן בשלושה צבעים — 5, 6, ו-10 — אותיות שם ה' (י-ה-ו-ה) צצות לאורך הטקסט באופן ספונטני, ללא כל התערבות."
-            visual={<YhvhVisual />}
-            ctaHe="ראה את הממצא ←"
-          />
-          <FindingCard
-            eyebrow="ממצא שני · FINDING TWO"
-            heTitle={'קונסטלציית הוא"ו'}
-            enTitle="The Vav constellation in Genesis 1"
-            body="האות ו מופיעה 177 פעמים בבראשית פרק א, מהווה את עמוד השדרה המבני של סיפור הבריאה. דפוס המופעים שלה יוצר תבנית גיאומטרית הניתנת למיפוי."
-            visual={<VavScatter />}
-            caption="177 vavs · Genesis 1"
-            ctaHe="ראה את הממצא ←"
-          />
-          <FindingCard
-            eyebrow="ממצא שלישי · FINDING THREE"
-            heTitle="אלהים מכיל יהלום"
-            enTitle="Elohim contains Yahalom (diamond)"
-            body="האותיות א-ל-ה-י-ם מכילות בתוכן את האותיות י-ה-ל-ם, המרכיבות את המילה 'יהלום'. הקשר אינו דקדוקי אלא מבני — הוא טמון בתוך השם עצמו."
-            visual={<ElohimVisual />}
-            caption="the word lives inside the name"
-            ctaHe="ראה את הממצא ←"
-          />
+          {F.cards.map((c, i) => (
+            <FindingCard key={i}
+              eyebrow={c.eyebrow}
+              latin={c.latin}
+              title={c.a}
+              secTitle={c.b}
+              body={c.body}
+              visual={visuals[i]}
+              caption={c.caption}
+              cta={F.cta}
+            />
+          ))}
         </div>
 
         <div className="gap-2xl"></div>
 
         <div className="center-ghost">
           <button className="btn-ghost bilingual">
-            <span className="he">צפה בכל הממצאים</span>
+            <span className="he">{F.allA}</span>
             <span style={{ color: 'var(--ink-40)' }}>/</span>
-            <span className="en">View all findings</span>
+            <span className="en" {...langAttrs()}>{F.allB}</span>
             <span className="arrow">→</span>
           </button>
         </div>

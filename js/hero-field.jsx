@@ -80,7 +80,7 @@ function HeroField() {
   }, [letters.length]);
 
   return (
-    <div className="hero-field" ref={fieldRef} aria-hidden="true">
+    <div className="hero-field" ref={fieldRef} aria-hidden="true" lang="he">
       {letters.map((ch, i) => {
         if (ch === ' ') return <span key={i}>{'\u00A0'}</span>;
         return <span key={i} className="l">{ch}</span>;
@@ -90,25 +90,26 @@ function HeroField() {
 }
 
 function Hero() {
+  const H = T.hero;
   return (
     <section className="hero-atmos" data-screen-label="Hero">
       <div className="hero-corner">
-        <span className="he">צופן אור</span>
+        <span className="he" lang="he">צופן אור</span>
         <span className="dot"></span>
-        <span>TSOFENOR · 01</span>
+        <span lang="en">TSOFENOR · 01</span>
       </div>
       <HeroField />
       <div className="hero-halo" aria-hidden="true"></div>
       <div className="hero-center">
-        <h1 className="headline">צופן אור</h1>
-        <p className="subtitle" lang="en" dir="ltr">
-          Revealing the mathematical structures hidden in the Masoretic text
+        <h1 className="headline" lang="he">צופן אור</h1>
+        <p className="subtitle" {...(H.subLang === TS_LANG ? {} : dirAttrs(H.subLang))}>
+          {H.sub}
         </p>
         <div className="cta-wrap">
           <button className="hero-cta" type="button">
-            <span className="he">התחל לחקור</span>
+            <span className="he">{H.ctaA}</span>
             <span className="sep" aria-hidden="true"></span>
-            <span className="en">Begin exploring</span>
+            <span className="en" {...langAttrs()}>{H.ctaB}</span>
           </button>
         </div>
       </div>

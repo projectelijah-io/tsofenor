@@ -13,7 +13,47 @@ js/hero-field.jsx     Genesis 1:1-1:5 field, pulse animation
 js/header-footer.jsx  sticky header, HE/EN toggle, footer
 js/findings.jsx       the three findings cards
 js/app.jsx            homepage composition (hero, findings, vision, CTA)
+js/i18n.js            every home-page string, per language (he / en / ja)
 ```
+
+## Languages
+
+Three language versions, each at its own crawlable URL:
+
+| | Hebrew (default, RTL) | English | Japanese |
+| --- | --- | --- | --- |
+| Home | `/` → `index.html` | `/en/` → `en/index.html` | `/ja/` → `ja/index.html` |
+| Research index | `/research/` | `/en/research/` | `/ja/research/` |
+| Privacy | `/privacy/` | `/en/privacy/` | `/ja/privacy/` |
+
+- **`<head>` is static in every HTML file** (title, description, canonical, hreflang
+  he/en/ja + x-default → Hebrew, `og:*`, `twitter:*`) — crawlers do not run the JSX.
+  Change a page's metadata in that page's own file.
+- **Home copy** lives in `js/i18n.js`, one object per language with identical keys.
+  The language is taken from the URL path (`/en/…`, `/ja/…`, else Hebrew), never from
+  a toggle or storage. Each page pairs its language with a companion, as the Hebrew
+  original pairs Hebrew with English: he + en, en + he (the Hebrew original), ja + en.
+- **Research copy**: static UI text is in each `*/research/index.html`; runtime strings
+  are in `UI` at the top of `research/shelf.js` (shared by all three pages). Entries in
+  `data/entries.json` are written in Hebrew; `i18n.en` / `i18n.ja` on an entry hold its
+  translated title, text, cluster, kind and tags. Hebrew quotations, the letters under
+  study, `sig` and `glyph` stay Hebrew in every language — they are the object of study.
+- **Privacy**: three independent files; keep them saying the same thing.
+- **Switcher** `עב · EN · 日本語` (`.lang-toggle` in `tokens.css`; `.langs` on the privacy
+  pages) links to the same page in each language, current one marked `aria-current`.
+- **Japanese**: Noto Serif JP / Noto Sans JP from Google Fonts, linked on `/ja/` pages
+  only and slotted behind the Latin faces (`html:lang(ja)` in `pages.css` / `shelf.css`),
+  with `line-break: strict` and no tracking on Japanese text. **Every Japanese string is
+  a draft awaiting native review.**
+- **Form**: the Netlify form `follow` is the same on every page; its hidden `lang` field
+  carries `he` / `en` / `ja`. Each language's `index.html` has its own hidden static copy
+  for form detection.
+- **Share images**: `assets/og/home.jpg` (Hebrew wordmark + English tagline) is used by
+  all three home pages; the research page has `research.jpg`, `research-en.jpg`,
+  `research-ja.jpg`, rendered by `tools/og.mjs` (Japanese font slices vendored in
+  `tools/og/fonts/`, listed in `noto-jp.css`).
+- **New page?** Add it in all three languages, with hreflang in each, to `sitemap.xml`
+  (with `xhtml:link` alternates), and copy the Cloudflare Web Analytics beacon.
 
 Total source: ~68 KB. The old bundle was 1.79 MB — 96% of it was
 React, Babel and embedded font files, none of it yours.

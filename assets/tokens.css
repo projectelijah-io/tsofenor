@@ -325,7 +325,10 @@ button { font: inherit; }
 .nav-item.is-active { border-bottom-color: var(--ink); }
 
 @media (max-width: 720px) {
-  .nav-items, .lang-toggle { display: none; }
+  .nav-items { display: none; }
+  .nav-right { gap: 16px; }
+  .lang-toggle { margin-inline-start: 0; height: 26px; }
+  .lang-toggle a { padding: 0 8px; letter-spacing: 0.08em; }
   .nav-mobile { display: flex; }
 }
 .nav-mobile {
@@ -342,14 +345,20 @@ button { font: inherit; }
   border: 1px solid var(--ink); height: 28px;
   margin-inline-start: 16px;
 }
-.lang-toggle button {
-  font-family: var(--sans); font-weight: 500; font-size: 11px;
-  letter-spacing: 0.16em; padding: 0 10px;
+/* Links to the same page in each language (/ · /en/ · /ja/); the current one is filled. */
+.lang-toggle a {
+  display: inline-flex; align-items: center;
+  font-family: var(--sans); font-weight: 500; font-size: 11px; line-height: 1;
+  letter-spacing: 0.16em; padding: 0 10px; text-decoration: none;
   background: transparent; color: var(--ink); border: 0; cursor: pointer;
   transition: background var(--t-fast), color var(--t-fast);
 }
-.lang-toggle button.is-active { background: var(--ink); color: var(--bg); }
-.lang-toggle button:not(.is-active):hover { background: rgba(15,15,15,0.05); }
+.lang-toggle a + a { border-inline-start: 1px solid var(--ink-10); }
+.lang-toggle a:lang(he) { font-family: var(--serif); font-size: 13px; letter-spacing: 0; }
+.lang-toggle a:lang(ja) { font-family: "Noto Sans JP", var(--sans); letter-spacing: 0; }
+.lang-toggle a.is-active { background: var(--ink); color: var(--bg); }
+.lang-toggle a:not(.is-active):hover { background: rgba(15,15,15,0.05); }
+.lang-toggle a:focus-visible { outline: 1px solid var(--ink); outline-offset: 2px; }
 
 /* ---------- Buttons ---------- */
 .btn {

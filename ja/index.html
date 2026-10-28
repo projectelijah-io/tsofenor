@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TsofenOr — マソラ本文の数学的構造</title>
+<meta name="description" content="TsofenOr（צופן אור）は、マソラ本文に潜む数学的構造を探究する、オープンなトーラー研究プラットフォームです。">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#121212">
+<link rel="canonical" href="https://tsofenor.com/ja/">
+<link rel="alternate" hreflang="he" href="https://tsofenor.com/">
+<link rel="alternate" hreflang="en" href="https://tsofenor.com/en/">
+<link rel="alternate" hreflang="ja" href="https://tsofenor.com/ja/">
+<link rel="alternate" hreflang="x-default" href="https://tsofenor.com/">
+<meta property="og:site_name" content="צופן אור · TsofenOr">
+<meta property="og:title" content="TsofenOr — マソラ本文の数学的構造">
+<meta property="og:description" content="TsofenOr（צופן אור）は、マソラ本文に潜む数学的構造を探究する、オープンなトーラー研究プラットフォームです。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tsofenor.com/ja/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="he_IL">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://tsofenor.com/assets/og/home.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TsofenOr（צופן אור）— Decoding the dimension of Light">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TsofenOr — マソラ本文の数学的構造">
+<meta name="twitter:description" content="TsofenOr（צופן אור）は、マソラ本文に潜む数学的構造を探究する、オープンなトーラー研究プラットフォームです。">
+<meta name="twitter:image" content="https://tsofenor.com/assets/og/home.jpg">
+<meta name="twitter:image:alt" content="TsofenOr（צופן אור）— Decoding the dimension of Light">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/tokens.css">
+<link rel="stylesheet" href="/assets/pages.css">
+</head>
+<body class="tsofenor-body">
+
+<div id="root"></div>
+<!-- Netlify form detection: the visible form is rendered by React (js/app.jsx). -->
+<form name="follow" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="follow"><input type="hidden" name="lang" value="ja"><input name="bot-field">
+  <input type="email" name="email"><input name="name"><textarea name="message"></textarea><input type="checkbox" name="consent">
+</form>
+
+
+<!-- DEV: Babel compiles JSX in the browser. Fine while iterating.
+     BEFORE DEPLOY: precompile js/*.jsx to js/*.js and drop babel.
+     See README.md — this is the single change that removes ~3MB. -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script src="/js/i18n.js"></script>
+<script type="text/babel" src="/js/hero-field.jsx"></script>
+<script type="text/babel" src="/js/header-footer.jsx"></script>
+<script type="text/babel" src="/js/findings.jsx"></script>
+<script type="text/babel" src="/js/app.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aa65a22d18b04a87a2e8c58be13b4e18"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Index — TsofenOr</title>
+<meta name="description" content="The TsofenOr research index — sources, reflections and open questions in the Masoretic text.">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#121212">
+<link rel="canonical" href="https://tsofenor.com/en/research/">
+<link rel="alternate" hreflang="he" href="https://tsofenor.com/research/">
+<link rel="alternate" hreflang="en" href="https://tsofenor.com/en/research/">
+<link rel="alternate" hreflang="ja" href="https://tsofenor.com/ja/research/">
+<link rel="alternate" hreflang="x-default" href="https://tsofenor.com/research/">
+<meta property="og:site_name" content="צופן אור · TsofenOr">
+<meta property="og:title" content="Research Index — TsofenOr">
+<meta property="og:description" content="The TsofenOr research index — sources, reflections and open questions in the Masoretic text.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tsofenor.com/en/research/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="he_IL">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:image" content="https://tsofenor.com/assets/og/research-en.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TsofenOr — Research Index: sources, reflections and open questions">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Research Index — TsofenOr">
+<meta name="twitter:description" content="The TsofenOr research index — sources, reflections and open questions in the Masoretic text.">
+<meta name="twitter:image" content="https://tsofenor.com/assets/og/research-en.jpg">
+<meta name="twitter:image:alt" content="TsofenOr — Research Index: sources, reflections and open questions">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/tokens.css">
+<link rel="stylesheet" href="/research/shelf.css">
+</head>
+<body class="tsofenor-body">
+
+<div class="idx-wrap">
+
+  <header class="idx-mast">
+    <div>
+      <div class="idx-top">
+        <a class="idx-back" href="/en/">← TsofenOr</a>
+        <nav class="lang-toggle" aria-label="Language"><a href="/research/" hreflang="he" lang="he" title="עברית">עב</a><a href="/en/research/" hreflang="en" lang="en" title="English" class="is-active" aria-current="page">EN</a><a href="/ja/research/" hreflang="ja" lang="ja" title="日本語">日本語</a></nav>
+      </div>
+      <h1>Research Index</h1>
+      <p class="idx-lede">Sources studied, reflections and open questions. The record is open in full — including what has not yet been decided.</p>
+    </div>
+    <div class="idx-count" id="count"></div>
+  </header>
+
+  <div class="idx-bar">
+    <input class="idx-search" id="q" type="search" placeholder="Search the index…" aria-label="Search">
+    <div class="idx-chips" id="tags"></div>
+    <div class="idx-controls">
+      <label class="sr-only" for="sort">Sort</label>
+      <select class="idx-sort" id="sort">
+        <option value="new">Newest first</option>
+        <option value="old">Oldest first</option>
+        <option value="az">By title</option>
+        <option value="sig">By cluster</option>
+      </select>
+      <div class="idx-seg" role="group" aria-label="View">
+        <button id="v-shelf" aria-pressed="true">Shelf</button>
+        <button id="v-cat" aria-pressed="false">Catalogue</button>
+      </div>
+    </div>
+  </div>
+
+  <main id="out" aria-live="polite">
+    <div class="idx-empty">Loading…</div>
+  </main>
+
+  <footer class="idx-foot">
+    <div>TsofenOr · Research Index</div>
+    <div>Open source · <span id="stamp"></span> · <a href="/en/privacy/">Privacy policy</a></div>
+  </footer>
+
+</div>
+
+<div class="idx-backdrop" id="bd" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="idx-sheet" id="sheet"></div>
+</div>
+
+<script src="/research/shelf.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aa65a22d18b04a87a2e8c58be13b4e18"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

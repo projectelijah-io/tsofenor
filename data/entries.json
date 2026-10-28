@@ -14,7 +14,27 @@
         "ספר יצירה",
         "ל״ב"
       ],
-      "text": "ספר יצירה נפתח: “בשלשים ושתים נתיבות פליאות חכמה חקק יה…”\n\n32 = 10 ספירות + 22 אותיות. ל״ב הוא גם צירוף האותיות ל+ב.\n\nעדיין רק ציטוט. אין כאן טענה — יש כאן מה שכתוב."
+      "text": "ספר יצירה נפתח: “בשלשים ושתים נתיבות פליאות חכמה חקק יה…”\n\n32 = 10 ספירות + 22 אותיות. ל״ב הוא גם צירוף האותיות ל+ב.\n\nעדיין רק ציטוט. אין כאן טענה — יש כאן מה שכתוב.",
+      "i18n": {
+        "en": {
+          "title": "ל״ב נתיבות פליאות חכמה — the 32 wondrous paths of wisdom",
+          "kind": "Source",
+          "tags": [
+            "Sefer Yetzirah",
+            "ל״ב"
+          ],
+          "text": "Sefer Yetzirah opens: “בשלשים ושתים נתיבות פליאות חכמה חקק יה…”\n\n32 = 10 sefirot + 22 letters. ל״ב is also the joining of the letters ל + ב.\n\nStill only a quotation. There is no claim here — only what is written."
+        },
+        "ja": {
+          "title": "ל״ב נתיבות פליאות חכמה —— 知恵の驚くべき32の小径",
+          "kind": "出典",
+          "tags": [
+            "セフェル・イェツィラー",
+            "ל״ב"
+          ],
+          "text": "『セフェル・イェツィラー（形成の書）』はこう始まる。“בשלשים ושתים נתיבות פליאות חכמה חקק יה…”\n\n32 = 10のセフィロト + 22の文字。ל״ב はまた、文字 ל と ב の組み合わせでもある。\n\nまだ引用にすぎない。ここに主張はない——書かれていることがあるだけだ。"
+        }
+      }
     },
     {
       "id": "a2",
@@ -28,7 +48,27 @@
         "ל״ב",
         "שאלה"
       ],
-      "text": "כמה פעמים מופיעות ל׳ ו־ב׳ בתורה? ובכל חומש בנפרד?\n\nולצד אילו מילים הן בולטות במיוחד.\n\n“בולטות” — עוד לא יודע ביחס למה. נשאיר פתוח."
+      "text": "כמה פעמים מופיעות ל׳ ו־ב׳ בתורה? ובכל חומש בנפרד?\n\nולצד אילו מילים הן בולטות במיוחד.\n\n“בולטות” — עוד לא יודע ביחס למה. נשאיר פתוח.",
+      "i18n": {
+        "en": {
+          "title": "Counting ל׳ and ב׳",
+          "kind": "Question",
+          "tags": [
+            "ל״ב",
+            "Question"
+          ],
+          "text": "How many times do ל׳ and ב׳ appear in the Torah? And in each of the five books separately?\n\nAnd next to which words do they stand out most.\n\n“Stand out” — I don’t yet know relative to what. Leaving it open."
+        },
+        "ja": {
+          "title": "ל׳ と ב׳ を数える",
+          "kind": "問い",
+          "tags": [
+            "ל״ב",
+            "問い"
+          ],
+          "text": "ל׳ と ב׳ はトーラーに何回現れるのか。五書それぞれではどうか。\n\nそして、どの語のそばで特に際立つのか。\n\n「際立つ」——何に比べてなのかは、まだわからない。開いたままにしておく。"
+        }
+      }
     },
     {
       "id": "a3",
@@ -42,7 +82,27 @@
         "ל״ב",
         "מדע"
       ],
-      "text": "לגוף האדם 31 זוגות עצבים ספינליים, ומוח אחד המאחד אותם. תבנית “1 + 31”.\n\nמקבילה מעניינת. לא ראיה — אין כאן תכונת טקסט שאפשר להריץ מול בקרה."
+      "text": "לגוף האדם 31 זוגות עצבים ספינליים, ומוח אחד המאחד אותם. תבנית “1 + 31”.\n\nמקבילה מעניינת. לא ראיה — אין כאן תכונת טקסט שאפשר להריץ מול בקרה.",
+      "i18n": {
+        "en": {
+          "title": "The brain and the 31 pairs of nerves",
+          "kind": "Reflection",
+          "tags": [
+            "ל״ב",
+            "Science"
+          ],
+          "text": "The human body has 31 pairs of spinal nerves, and one brain that unites them. A “1 + 31” pattern.\n\nAn interesting parallel. Not evidence — there is no property of the text here that can be run against a control."
+        },
+        "ja": {
+          "title": "脳と31対の神経",
+          "kind": "考察",
+          "tags": [
+            "ל״ב",
+            "科学"
+          ],
+          "text": "人体には31対の脊髄神経があり、それらを束ねる脳がひとつある。「1 + 31」という形。\n\n興味深い対応ではある。だが証拠ではない——ここには、対照と比べて検証できる本文の性質がない。"
+        }
+      }
     },
     {
       "id": "a4",
@@ -56,7 +116,27 @@
         "ל״ב",
         "תורה"
       ],
-      "text": "התורה נפתחת ב־ב׳ ונחתמת ב־ל׳. הקצוות מצטרפים ל־ל״ב.\n\nיפה — אבל לכל טקסט יש אות ראשונה ואחרונה. אסמכתה, לא ראיה."
+      "text": "התורה נפתחת ב־ב׳ ונחתמת ב־ל׳. הקצוות מצטרפים ל־ל״ב.\n\nיפה — אבל לכל טקסט יש אות ראשונה ואחרונה. אסמכתה, לא ראיה.",
+      "i18n": {
+        "en": {
+          "title": "The phenomenon of the edges",
+          "kind": "Reflection",
+          "tags": [
+            "ל״ב",
+            "Torah"
+          ],
+          "text": "The Torah opens with ב׳ and closes with ל׳. The two ends join to form ל״ב.\n\nBeautiful — but every text has a first and a last letter. A support (asmakhta), not proof."
+        },
+        "ja": {
+          "title": "両端の現象",
+          "kind": "考察",
+          "tags": [
+            "ל״ב",
+            "トーラー"
+          ],
+          "text": "トーラーは ב׳ で始まり、ל׳ で終わる。両端を合わせると ל״ב になる。\n\n美しい——だが、どんなテキストにも最初と最後の文字はある。裏づけ（アスマフタ）であって、証明ではない。"
+        }
+      }
     },
     {
       "id": "a5",
@@ -70,7 +150,27 @@
         "ל״ב",
         "גאומטריה"
       ],
-      "text": "32 = 2⁵ = קודקודי הקובייה החמש־ממדית, ולה עשרה על־תאים.\n\nכל חזקת 2 מתנהגת כך, אז זה לא ייחודי. יקבל משקל רק אם מבנה השכנויות יימצא ביחסים בפועל."
+      "text": "32 = 2⁵ = קודקודי הקובייה החמש־ממדית, ולה עשרה על־תאים.\n\nכל חזקת 2 מתנהגת כך, אז זה לא ייחודי. יקבל משקל רק אם מבנה השכנויות יימצא ביחסים בפועל.",
+      "i18n": {
+        "en": {
+          "title": "ל״ב as the vertices of a penteract",
+          "kind": "Question",
+          "tags": [
+            "ל״ב",
+            "Geometry"
+          ],
+          "text": "32 = 2⁵ = the vertices of the five-dimensional cube, which has ten hypercells.\n\nEvery power of 2 behaves this way, so it is not unique. It will carry weight only if the adjacency structure is found in the actual relationships."
+        },
+        "ja": {
+          "title": "ペンテラクト（五次元立方体）の頂点としての ל״ב",
+          "kind": "問い",
+          "tags": [
+            "ל״ב",
+            "幾何学"
+          ],
+          "text": "32 = 2⁵ = 五次元立方体の頂点の数。五次元立方体は10個の超胞を持つ。\n\n2の累乗はどれもこう振る舞うので、これは特別なことではない。隣接の構造が実際の関係の中に見出されたときに初めて、重みを持つ。"
+        }
+      }
     },
     {
       "id": "b1",
@@ -84,7 +184,29 @@
         "בראשית",
         "ל״ב"
       ],
-      "text": "בבראשית א׳ מופיע השם “אלהים” 32 פעמים.\n\nהספירה נעצרת בגבול הפרק — וחלוקת הפרקים אינה מסורה. ביחידה המסורתית המספר משתנה."
+      "text": "בבראשית א׳ מופיע השם “אלהים” 32 פעמים.\n\nהספירה נעצרת בגבול הפרק — וחלוקת הפרקים אינה מסורה. ביחידה המסורתית המספר משתנה.",
+      "i18n": {
+        "en": {
+          "title": "Thirty-two occurrences",
+          "cluster": "Names",
+          "kind": "Source",
+          "tags": [
+            "Genesis",
+            "ל״ב"
+          ],
+          "text": "In Genesis 1 the name “אלהים” appears 32 times.\n\nThe count stops at the chapter boundary — and the chapter division is not part of the Masoretic tradition. In the traditional unit, the number changes."
+        },
+        "ja": {
+          "title": "32回の出現",
+          "cluster": "御名",
+          "kind": "出典",
+          "tags": [
+            "創世記",
+            "ל״ב"
+          ],
+          "text": "創世記1章には「אלהים」という名が32回現れる。\n\nこの数は章の区切りで止まる——だが章の区分はマソラの伝承によるものではない。伝承上の区分で数えると、数は変わる。"
+        }
+      }
     },
     {
       "id": "b2",
@@ -98,7 +220,29 @@
         "בראשית",
         "אותיות"
       ],
-      "text": "האות ו׳ מופיעה 177 פעמים בבראשית א׳. 177 = 3 × 59.\n\nהוא״ו היא אות החיבור. כל סיפור הבריאה מוחזק על ידיה."
+      "text": "האות ו׳ מופיעה 177 פעמים בבראשית א׳. 177 = 3 × 59.\n\nהוא״ו היא אות החיבור. כל סיפור הבריאה מוחזק על ידיה.",
+      "i18n": {
+        "en": {
+          "title": "The Vav constellation",
+          "cluster": "Names",
+          "kind": "Reflection",
+          "tags": [
+            "Genesis",
+            "Letters"
+          ],
+          "text": "The letter ו׳ appears 177 times in Genesis 1. 177 = 3 × 59.\n\nVav is the letter of joining. The whole creation story is held together by it."
+        },
+        "ja": {
+          "title": "ヴァヴの星座",
+          "cluster": "御名",
+          "kind": "考察",
+          "tags": [
+            "創世記",
+            "文字"
+          ],
+          "text": "文字 ו׳ は創世記1章に177回現れる。177 = 3 × 59。\n\nヴァヴは結びつけの文字である。天地創造の物語全体が、この文字によって支えられている。"
+        }
+      }
     },
     {
       "id": "b3",
@@ -112,7 +256,30 @@
         "בראשית",
         "ויזואליזציה"
       ],
-      "text": "בהדגשת המספרים 5, 6 ו־10 בשלושה צבעים לאורך הזרם המספרי, אותיות שם ה׳ מתאספות מעצמן.\n\nממצא הפתיחה של הפרויקט."
+      "text": "בהדגשת המספרים 5, 6 ו־10 בשלושה צבעים לאורך הזרם המספרי, אותיות שם ה׳ מתאספות מעצמן.\n\nממצא הפתיחה של הפרויקט.",
+      "i18n": {
+        "en": {
+          "title": "The Divine Name in three colors",
+          "cluster": "Names",
+          "kind": "Reflection",
+          "tags": [
+            "Genesis",
+            "Visualization"
+          ],
+          "text": "When the numbers 5, 6 and 10 are highlighted in three colors along the numeric stream, the letters of the Divine Name gather of their own accord.\n\nThe project’s opening finding."
+        },
+        "ja": {
+          "title": "三色で現れる神名",
+          "cluster": "御名",
+          "kind": "考察",
+          "tags": [
+            "創世記",
+            "可視化"
+          ],
+          "text": "数の流れに沿って5、6、10を三色で強調すると、神名の文字がひとりでに集まってくる。\n\nこのプロジェクトの出発点となった発見。"
+        }
+      }
     }
-  ]
+  ],
+  "_i18n": "Each entry is written in Hebrew. i18n.en / i18n.ja hold the English and Japanese title, text, cluster, kind and tags shown on /en/research/ and /ja/research/ (missing fields fall back to Hebrew). Hebrew quotations and the letters under study stay Hebrew in every language. Japanese is a draft awaiting native review."
 }
