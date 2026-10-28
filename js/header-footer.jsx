@@ -85,7 +85,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <div className="fb-cell">© 2026 TsofenOr · צופן אור</div>
+          <div className="fb-cell">© 2026 TsofenOr · צופן אור · <a href="/privacy/">מדיניות פרטיות</a></div>
           <div className="fb-cell center">Part of the Brain of Eliyahu research initiative · חלק מיוזמת המחקר 'מוח אליהו'</div>
           <div className="fb-cell right">v1.0 · MASORETIC TEXT</div>
         </div>
