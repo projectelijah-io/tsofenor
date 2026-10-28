@@ -132,12 +132,12 @@ function GetInvolved() {
             <p className="en" lang="en" dir="ltr">
               If you're a researcher, kabbalist, or mathematician — get in touch
             </p>
-            <button className="btn-ghost bilingual">
+            <a className="btn-ghost bilingual" href="#follow">
               <span className="he">צור קשר</span>
               <span style={{ color: 'var(--ink-40)' }}>/</span>
               <span className="en">Contact</span>
               <span className="arrow">→</span>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -167,6 +167,62 @@ function Mission() {
   );
 }
 
+/* Follow the research — lead capture (Netlify form "follow").
+   The form is rendered by React, so Netlify cannot see it at deploy time: a hidden
+   static copy with the same name and fields sits in index.html for form detection. */
+function FollowResearch() {
+  const [state, setState] = React.useState('idle'); // idle | sending | sent | error
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const f = e.currentTarget;
+    setState('sending');
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(f)).toString(),
+    }).then((r) => { if (!r.ok) throw new Error(r.status); f.reset(); setState('sent'); })
+      .catch(() => setState('error'));
+  };
+  return (
+    <section id="follow" className="follow" data-screen-label="Follow">
+      <div className="section-pad">
+        <div className="follow-wrap">
+          <div className="section-head-centered">
+            <span className="eyebrow-row">
+              <span className="he">עדכונים</span>
+              <span className="dot"></span>
+              <span>FOLLOW THE RESEARCH</span>
+            </span>
+            <h2 className="title" style={{ fontSize: 40 }}>עקבו אחרי המחקר</h2>
+            <p className="subtitle">השאירו אימייל ונעדכן אתכם בכל פעם שממצא חדש מתפרסם. חוקרים, מקובלים ומתמטיקאים מוזמנים לכתוב לנו גם הודעה.</p>
+            <p className="subtitle" lang="en" dir="ltr">Leave your email and we will write when a new finding is published.</p>
+          </div>
+          {state === 'sent' ? (
+            <p className="follow-done" role="status">תודה! נעדכן אתכם כשממצא חדש יתפרסם. <span lang="en" dir="ltr">Thank you, we will be in touch.</span></p>
+          ) : (
+            <form className="follow-form" name="follow" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit}>
+              <input type="hidden" name="form-name" value="follow" />
+              <input type="hidden" name="lang" value="he" />
+              <p hidden><label>Leave empty: <input name="bot-field" /></label></p>
+              <label className="follow-field"><span>אימייל <span className="en" lang="en">Email</span></span>
+                <input type="email" name="email" required autoComplete="email" dir="ltr" /></label>
+              <label className="follow-field"><span>שם <small>(לא חובה)</small></span>
+                <input name="name" autoComplete="name" /></label>
+              <label className="follow-field"><span>הודעה לחוקרים <small>(לא חובה)</small></span>
+                <textarea name="message" rows="3"></textarea></label>
+              <label className="follow-consent"><input type="checkbox" name="consent" value="yes" required />
+                <span>קראתי ואני מסכים/ה ל<a href="/privacy/">מדיניות הפרטיות</a></span></label>
+              <button className="btn-solid" type="submit" disabled={state === 'sending'}>הרשמה לעדכונים</button>
+              {state === 'error' && <p className="follow-error" role="status">השליחה לא הצליחה. נסו שוב בעוד רגע, או כתבו אל <span dir="ltr">privacy@projectelijah.io</span>.</p>}
+            </form>
+          )}
+        </div>
+        <div className="gap-2xl"></div>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   return (
     <React.Fragment>
@@ -180,6 +236,7 @@ function App() {
         <Vision />
         <div className="gap-3xl"></div>
         <GetInvolved />
+        <FollowResearch />
       </main>
       <Footer />
     </React.Fragment>

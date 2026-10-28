@@ -578,3 +578,23 @@ main { display: block; }
 
 /* Helpful overrides for footer spacing — section already has top hairline */
 footer.footer { margin-top: 0; }
+
+/* ---------- Follow the research (lead form) ---------- */
+.follow { border-top: var(--hairline); }
+.follow-wrap { max-width: 640px; margin: 0 auto; }
+.follow-form { display: grid; gap: var(--sm); margin-top: var(--xl); font-family: var(--sans); }
+.follow-field { display: grid; gap: 6px; font-size: 15px; color: var(--fg); }
+.follow-field small, .follow-field .en { color: var(--fg-muted); font-size: 13px; }
+.follow-field input, .follow-field textarea { font: inherit; font-size: 16px; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--ink-10); border-radius: var(--radius); padding: 12px 14px; width: 100%; box-sizing: border-box; }
+.follow-field input:focus-visible, .follow-field textarea:focus-visible, .follow-consent input:focus-visible { outline: 1px solid var(--ink); outline-offset: 2px; }
+.follow-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--fg-muted); }
+.follow-consent input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--ink); flex: none; }
+.follow-consent a { color: var(--ink); }
+.btn-solid { justify-self: start; font: 500 15px var(--sans); background: var(--ink); color: var(--bg); border: 0; border-radius: var(--radius); padding: 14px 28px; cursor: pointer; transition: background var(--t-fast); }
+.btn-solid:hover { background: var(--accent); }
+.btn-solid:disabled { opacity: .6; cursor: wait; }
+.follow-done { margin-top: var(--xl); font-family: var(--serif); font-size: 24px; text-align: center; }
+.follow-error { margin: 0; font-size: 14px; color: var(--ink); }
+
+a.btn-ghost { text-decoration: none; color: inherit; }
