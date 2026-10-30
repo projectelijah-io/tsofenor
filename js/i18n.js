@@ -88,6 +88,8 @@
         repo: 'GitHub Repository →', docs: 'Methodology Documentation →',
         privacy: 'מדיניות פרטיות',
         initiative: "Part of the Brain of Eliyahu research initiative · חלק מיוזמת המחקר 'מוח אליהו'",
+        // Project Elijah strip (last row of the footer): links only to the hub, in this language.
+        strip: { href: 'https://projectelijah.io/', a: 'מיזם של פרויקט אליהו', b: 'Social Tech Vision Capital' },
       },
     },
 
@@ -168,6 +170,8 @@
         repo: 'GitHub Repository →', docs: 'Methodology Documentation →',
         privacy: 'Privacy policy',
         initiative: "Part of the Brain of Eliyahu research initiative · חלק מיוזמת המחקר 'מוח אליהו'",
+        // Project Elijah strip (last row of the footer): links only to the hub, in this language.
+        strip: { href: 'https://projectelijah.io/en/', a: 'A Project Elijah venture', b: 'Social Tech Vision Capital' },
       },
     },
 
@@ -248,6 +252,8 @@
         repo: 'GitHub リポジトリ →', docs: '方法論ドキュメント →',
         privacy: 'プライバシーポリシー',
         initiative: '研究イニシアティブ「Brain of Eliyahu」の一部 · Part of the Brain of Eliyahu research initiative',
+        // Project Elijah strip (last row of the footer): links only to the hub, in this language. // draft awaiting native review
+        strip: { href: 'https://projectelijah.io/ja/', a: 'プロジェクト・エリヤのベンチャー', b: 'Social Tech Vision Capital' },
       },
     },
   };
