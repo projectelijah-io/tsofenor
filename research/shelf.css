@@ -162,6 +162,9 @@ main{padding:var(--lg) 0 var(--3xl)}
   font-family:var(--mono);font-size:var(--t-caption);color:var(--fg-faint);
 }
 
+/* Project Elijah strip (rules in tokens.css): a full-width last row of this footer */
+.idx-foot .pe-strip-row{flex:0 0 100%;box-sizing:border-box;padding:14px 0 0}
+
 /* ---------- responsive ---------------------------------------------- */
 @media (max-width:720px){
   .idx-wrap{padding:0 var(--md)}

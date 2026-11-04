@@ -556,6 +556,20 @@ button { font: inherit; }
   letter-spacing: 0.16em; text-transform: uppercase;
 }
 
+/* Project Elijah strip: the one link back to the hub, same on every venture site (colours follow this footer) */
+.pe-strip-row { border-top: 1px solid rgba(15,15,15,0.16); padding: 14px 20px 18px; text-align: center; }
+a.pe-strip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans); font-size: 12.5px; line-height: 1.5; letter-spacing: 0.02em;
+  color: var(--ink-40); text-decoration: none; transition: color var(--t-fast);
+}
+a.pe-strip:hover, a.pe-strip:focus-visible { color: var(--ink); }
+a.pe-strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+html:lang(ja) a.pe-strip { letter-spacing: 0; }
+.pe-spark { flex: none; }
+.pe-strip > span { text-align: center; }
+.pe-nw { white-space: nowrap; }
+
 @media (max-width: 720px) {
   .footer-inner { padding: 64px 24px 48px; }
   .footer-cols { grid-template-columns: 1fr; gap: 48px; }
