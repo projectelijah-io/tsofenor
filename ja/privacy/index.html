@@ -33,6 +33,15 @@
   .langs a { text-decoration:none; color:var(--muted); padding:2px 6px; }
   .langs a[aria-current] { color:var(--fg); font-weight:600; }
   .langs a:hover { text-decoration:underline; }
+  /* Project Elijah strip: the one link back to the hub, same on every venture site */
+  .pe-strip-row { border-top:1px solid rgba(18,18,18,.16); padding:14px 20px 18px; text-align:center; }
+  a.pe-strip { display:inline-flex; align-items:center; gap:8px; font-size:12.5px; line-height:1.5; letter-spacing:.02em; color:var(--muted); text-decoration:none; }
+  a.pe-strip:hover, a.pe-strip:focus-visible { color:var(--fg); }
+  a.pe-strip:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:2px; }
+  :lang(ja) a.pe-strip { letter-spacing:0; }
+  .pe-spark { flex:none; }
+  .pe-strip > span { text-align:center; }
+  .pe-nw { white-space:nowrap; }
 </style>
 </head>
 <body>
@@ -42,6 +51,7 @@
   <p class="date">最終更新日：2026年10月28日</p>
   <h2>運営者</h2><p>TsofenOr — <bdi lang="he">צופן אור</bdi>（tsofenor.com）は、Project Elijah のプロジェクトのひとつで、イスラエルの Ronen Priewer が運営しています。プライバシーに関するご質問やご依頼は <a href="mailto:privacy@projectelijah.io">privacy@projectelijah.io</a> までお寄せください。</p><h2>収集する情報</h2><p>私たちが受け取るのは、サイト上のフォームを通じてお客様が送信を選んだ情報のみです。</p><ul><li>研究の最新情報の登録：メールアドレス、および任意でお名前とメッセージ。新しい発見をお知らせし、ご連絡を差し上げるために使用します。</li></ul><p>これらの情報は、お客様へのご連絡と、ご記入いただいたフォームの目的のためにのみ使用します。販売、貸与、広告への利用は一切いたしません。</p><p>サイトの訪問者数や閲覧されているページを把握するため、Cloudflare Web Analytics を使用しています。このツールは Cookie を保存せず、端末のフィンガープリントを作成せず、サイトをまたいだ追跡も行いません。私たちが確認できるのは、ページビュー、国、参照元サイト、ブラウザの種類といった集計値のみです。</p><p>ホスティング事業者の Netlify は、ページの表示とサイトの不正利用防止のため、IP アドレスなどの技術情報を処理します。</p><h2>Cookie</h2><p>追跡や広告を目的とした Cookie は使用していません。</p><h2>情報を取り扱う事業者</h2><p>Netlify（サイトのホスティングとフォームの受信）および Cloudflare（訪問統計）。一部のページは Google Fonts からフォントを読み込んでおり、そのために Google Fonts がお客様の IP アドレスを受け取ります。法令により求められる場合を除き、これ以外の第三者に情報を提供することはありません。</p><h2>保存期間</h2><p>フォームからのお問い合わせは、お客様へのご連絡やプロジェクトに関する最新情報のお知らせに必要な期間に限り保存します。いつでも削除をご依頼いただけます。</p><h2>お客様の権利</h2><p>イスラエルのプライバシー保護法（5741–1981年）、および該当する場合は EU 一般データ保護規則（GDPR）に基づき、私たちが保有するお客様の情報の閲覧、訂正、削除を求めることができます。<a href="mailto:privacy@projectelijah.io">privacy@projectelijah.io</a> までご連絡いただければ、30日以内に回答いたします。</p><h2>変更</h2><p>本ポリシーを変更する場合は、このページと冒頭の日付を更新します。</p>
 </main>
+<footer><div class="pe-strip-row"><a class="pe-strip" href="https://projectelijah.io/ja/" target="_blank" rel="noopener"><svg class="pe-spark" viewBox="0 0 64 64" width="15" height="15" aria-hidden="true" focusable="false"><path d="M32 2 Q40 24 62 32 Q40 40 32 62 Q24 40 2 32 Q24 24 32 2Z" fill="#c9a84c"/><circle cx="32" cy="32" r="7" fill="#fff4d0"/></svg><span><span class="pe-nw">プロジェクト・エリヤのベンチャー</span> · <span class="pe-nw">Social Tech Vision Capital</span></span></a></div></footer>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aa65a22d18b04a87a2e8c58be13b4e18"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

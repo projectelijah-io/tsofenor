@@ -89,6 +89,21 @@ function FooterProse({ lang, children }) {
   );
 }
 
+/* Project Elijah strip: the one link back to the hub, same markup on every venture site. */
+function PeStrip() {
+  const S = T.footer.strip;
+  return (
+    <div className="pe-strip-row">
+      <a className="pe-strip" href={S.href} target="_blank" rel="noopener">
+        <svg className="pe-spark" viewBox="0 0 64 64" width="15" height="15" aria-hidden="true" focusable="false"><path d="M32 2 Q40 24 62 32 Q40 40 32 62 Q24 40 2 32 Q24 24 32 2Z" fill="#c9a84c"/><circle cx="32" cy="32" r="7" fill="#fff4d0"/></svg>
+        <span><span className="pe-nw">{S.a}</span> · {TS_LANG === 'he'
+          ? <bdi lang="en" className="pe-nw">{S.b}</bdi>
+          : <span className="pe-nw">{S.b}</span>}</span>
+      </a>
+    </div>
+  );
+}
+
 function Footer() {
   const F = T.footer;
   return (
@@ -123,6 +138,7 @@ function Footer() {
           <div className="fb-cell right">v1.0 · MASORETIC TEXT</div>
         </div>
       </div>
+      <PeStrip />
     </footer>
   );
 }

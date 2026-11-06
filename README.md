@@ -52,6 +52,14 @@ Three language versions, each at its own crawlable URL:
   all three home pages; the research page has `research.jpg`, `research-en.jpg`,
   `research-ja.jpg`, rendered by `tools/og.mjs` (Japanese font slices vendored in
   `tools/og/fonts/`, listed in `noto-jp.css`).
+- **Project Elijah strip**: the last row of every footer (`.pe-strip-row` > `a.pe-strip`, rules in
+  `tokens.css`; the privacy pages carry their own copy in their inline `<style>`): the gold spark and
+  "מיזם של פרויקט אליהו · Social Tech Vision Capital" / "A Project Elijah venture · …" /
+  "プロジェクト・エリヤのベンチャー · …", one link to the hub https://projectelijah.io in the page's language
+  (`/`, `/en/`, `/ja/`). Home: `PeStrip` in `header-footer.jsx`, strings in `footer.strip` in `i18n.js`;
+  research and privacy: static markup in each file. It links only to the hub, never to other ventures, with the
+  same markup and class names as every venture site. The home pages carry an `Organization` JSON-LD with
+  `parentOrganization` Project Elijah.
 - **New page?** Add it in all three languages, with hreflang in each, to `sitemap.xml`
   (with `xhtml:link` alternates), and copy the Cloudflare Web Analytics beacon.
 
