@@ -62,7 +62,7 @@ function Header() {
             {T.nav.map(it => (
               <a key={it.id}
                  className={'nav-item' + (it.active ? ' is-active' : '')}
-                 href={'#' + it.id}>
+                 href={it.href || '#' + it.id}>
                 <span className="ni-he">{it.a}</span>
                 <span className="ni-en" {...langAttrs()}>{it.b}</span>
               </a>
@@ -114,7 +114,7 @@ function Footer() {
             <div className="col-sub" {...langAttrs()}>{F.cols[2][1]}</div>
             {F.open.map((p, i) => <FooterProse key={i} lang={p.lang}>{p.t}</FooterProse>)}
             <p style={{ margin: '0 0 10px' }}><a className="btn-ghost" style={{ fontSize: 13 }}>{F.repo}</a></p>
-            <p style={{ margin: 0 }}><a className="btn-ghost" style={{ fontSize: 13 }}>{F.docs}</a></p>
+            <p style={{ margin: 0 }}><a className="btn-ghost" style={{ fontSize: 13 }} {...(T.method ? { href: T.method } : {})}>{F.docs}</a></p>
           </div>
         </div>
         <div className="footer-bottom">

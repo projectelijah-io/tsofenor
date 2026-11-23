@@ -58,6 +58,14 @@ Three language versions, each at its own crawlable URL:
 Total source: ~68 KB. The old bundle was 1.79 MB — 96% of it was
 React, Babel and embedded font files, none of it yours.
 
+## Method page (`/method/`)
+
+`method/index.html` is **generated** by the TsofenOr engine (`python -m tsofenor site-method` in
+projectelijah-io/tsofenor-engine) from the engine's own rules, milui table, sources and
+computations, with its version and update date at the top. Do not edit it by hand: change the
+engine's sources and rebuild. Hebrew only for now; linked from the Hebrew menu, the home page's
+"01 / READ" button and the footer's methodology link.
+
 ## Before deploying — one change that matters
 
 `index.html` currently loads `@babel/standalone` so the browser can

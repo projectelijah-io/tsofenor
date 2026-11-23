@@ -13,12 +13,13 @@
   var I18N = {
     he: {
       sec: 'en',
-      home: '/', privacy: '/privacy/',
+      home: '/', privacy: '/privacy/', method: '/method/',
       langLabel: 'שפה',
       nav: [
         { id: 'findings', a: 'הממצאים', b: 'Findings', active: true },
         { id: 'explore',  a: 'חקור',    b: 'Explore' },
         { id: 'about',    a: 'אודות',   b: 'About' },
+        { id: 'method',   a: 'השיטה',   b: 'Method', href: '/method/' },
       ],
       hero: { sub: 'Revealing the mathematical structures hidden in the Masoretic text', subLang: 'en',
               ctaA: 'התחל לחקור', ctaB: 'Begin exploring' },
@@ -60,7 +61,7 @@
         title: 'אם הממצאים מסקרנים אותך, יש דרכים להעמיק.',
         sub: 'If the findings move you, there are ways to go deeper.',
         items: [
-          { num: '01 / READ', a: 'קרא את המתודולוגיה המלאה', b: 'Read the full methodology', btnA: 'פתח את התיעוד', btnB: 'Open documentation' },
+          { num: '01 / READ', a: 'קרא את המתודולוגיה המלאה', b: 'Read the full methodology', btnA: 'פתח את התיעוד', btnB: 'Open documentation', href: '/method/' },
           { num: '02 / EXPLORE', a: 'חקור את הטקסט בעצמך עם הכלים שלנו', b: 'Explore the text yourself with our tools', btnA: 'פתח את הנגן', btnB: 'Open the player' },
           { num: '03 / CONTRIBUTE', a: 'אם אתה חוקר, מקובל או מתמטיקאי — צור קשר', b: "If you're a researcher, kabbalist, or mathematician — get in touch", btnA: 'צור קשר', btnB: 'Contact', href: '#follow' },
         ],
