@@ -20,6 +20,7 @@
         { id: 'explore',  a: 'חקור',    b: 'Explore' },
         { id: 'about',    a: 'אודות',   b: 'About' },
         { id: 'method',   a: 'השיטה',   b: 'Method', href: '/method/' },
+        { id: 'library',  a: 'ספריית האור', b: 'Library', href: '/library/' },
       ],
       hero: { sub: 'Revealing the mathematical structures hidden in the Masoretic text', subLang: 'en',
               ctaA: 'התחל לחקור', ctaB: 'Begin exploring' },
