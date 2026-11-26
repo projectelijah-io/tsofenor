@@ -7,8 +7,8 @@
   "paragraph": "תמצית",
   "full": "מלל מלא"
  },
- "core": "core-66acf2d9f3",
- "count": 79,
+ "core": "core-afbd6f51ed",
+ "count": 80,
  "records": [
   {
    "id": "kaplan-sy-1-1/n1",
@@ -454,6 +454,21 @@
    "title": "חוקי היסוד v1",
    "paragraph": "חוקי היסוד v1: וקטור האות ורמות השוויון L0–L5",
    "full_text": "איך המנוע בודק: the fingerprint of the rules part (v1) is sha256 88a1c0a1de627fa0…\nתוצאת הבדיקה: תואם\nדרגה: נבדק\nרמה: גרעין\nמשרת: הגרעין\nמקום במקור: DECISIONS 2026-11-20 (hub tsofenor-pr-4, tsofenor-pr-4-v1)\nמזהה: tsofenor-core/rules-v1",
+   "step": "checked",
+   "level": "core",
+   "directions": [
+    "core"
+   ],
+   "anchor": null,
+   "quote": null,
+   "kind": "knowledge-item"
+  },
+  {
+   "id": "tsofenor-core/atom-v1",
+   "source": "רונן פריבר (החלטות צופן אור) · גרעין צופן אור",
+   "title": "טבלת האטום atom-v1",
+   "paragraph": "טבלת האטום atom-v1: האטום = האות, ערכה בחמשת הקודים, המילוי ומקומה במעגל; המולקולה (המילה) מלבישה על כל אטום ניקוד, דגש, טעמים, אות מיוחדת ומקום במילה",
+   "full_text": "איך המנוע בודק: the fingerprint of the atom part (atom-v1) is sha256 4b4904aeb28de86a…\nתוצאת הבדיקה: תואם\nדרגה: נבדק\nרמה: גרעין\nמשרת: הגרעין\nמקום במקור: DECISIONS 2026-11-24 (hub tsofenor-foundations d1, d2)\nמזהה: tsofenor-core/atom-v1",
    "step": "checked",
    "level": "core",
    "directions": [
